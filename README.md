@@ -3,6 +3,19 @@ This is the MAGLab website source code and a work in progress.
 
 Also, the readme is a work in progress.
 
+## Development Setup
+
+Prerequisites
+* PHP
+
+```bash
+cp home/protected/maglab/config/config.php.example home/protected/maglab/config/config.php
+cd home/public
+php -S localhost:8000
+```
+
+Visit the home page at http://localhost:8000/MainApp.php
+
 ## TODO
 * Write Deployment Instructions
 

@@ -101,12 +101,6 @@ Menu
 <li>
 <a <?php echo MtHaml\Runtime::renderAttributes(array(array('href', ('/hal'))), 'html5', 'UTF-8'); ?>>Are We Open?</a>
 </li>
-<li>
-<a <?php echo MtHaml\Runtime::renderAttributes(array(array('href', ('/members/procurement'))), 'html5', 'UTF-8'); ?>>Shopping List</a>
-</li>
-<li>
-<a <?php echo MtHaml\Runtime::renderAttributes(array(array('href', ('/members'))), 'html5', 'UTF-8'); ?>>Members Dashboard</a>
-</li>
 </ul>
 </div>
 </div>
@@ -114,22 +108,13 @@ Menu
 <div class="container">
 <ul class="social-icons">
 <li>
-<a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-mail'), array('href', ('mailto:contact@maglaboratory.org')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
+<a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-discord'), array('href', ('https://discord.gg/rtzD3PA')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
 </li>
 <li>
 <a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-facebook'), array('href', ('https://www.facebook.com/MAGLaboratory')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
 </li>
 <li>
-<a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-twitter'), array('href', ('https://www.twitter.com/MAGLaboratory')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
-</li>
-<li>
 <a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-instagram'), array('href', ('https://www.instagram.com/MAGLaboratory/')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
-</li>
-<li>
-<a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-youtube'), array('href', ('https://www.youtube.com/channel/UCxkmJiwGmDQnIvLe2gDKbpg')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
-</li>
-<li>
-<a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-yelp'), array('href', ('https://www.yelp.com/biz/mag-lab-walnut')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>
 </li>
 <li>
 <a <?php echo MtHaml\Runtime::renderAttributes(array(array('class', 'sprite-github'), array('href', ('https://github.com/MAGLaboratory')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>></a>

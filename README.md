@@ -6,15 +6,14 @@ Also, the readme is a work in progress.
 ## Development Setup
 
 Prerequisites
-* PHP
+* Docker
 
 ```bash
-cp home/protected/maglab/config/config.php.example home/protected/maglab/config/config.php
-cd home/public
-php -S localhost:8000
+docker build -t maglaboratory/website .
+docker run -p 8000:80 maglaboratory/website
 ```
 
-Visit the home page at http://localhost:8000/MainApp.php
+Visit the home page at http://localhost:8000
 
 ## TODO
 * Write Deployment Instructions

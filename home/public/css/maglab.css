@@ -52,3 +52,6 @@ body { background: #fff url("/images/bg/subtle/gridme.png") repeat scroll center
 #activity_panel td { font-size: 20px; }
 #activity_panel th { font-size: 20px; text-align: center; }
 #activity_panel .alert h1 { text-align: center; }
+
+#additional-links .social-icons { text-align: center; }
+#additional-links h1 { margin-bottom: 20px; }

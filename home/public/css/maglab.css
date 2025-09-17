@@ -40,7 +40,7 @@ body { background: #fff url("/images/bg/subtle/gridme.png") repeat scroll center
 .bg-subtle- { background: #ddd url('/images/bg/subtle/.png') repeat fixed center;
 }
 */
-#footer.bg-maglab_map { height: 1222px; background-origin: content-box; background: #eaeaea url("/images/bg/maglab_map.jpg") no-repeat fixed center; padding: 0; border: 0; margin: 0; }
+#footer.bg-maglab_map { height: 1222px; background-origin: content-box; background: #eaeaea url("/images/bg/maglab_map.webp") no-repeat fixed center; padding: 0; border: 0; margin: 0; }
 
 #join-newsletter .form-control { color: #222; }
 

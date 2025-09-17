@@ -10,10 +10,16 @@ Prerequisites
 
 ```bash
 docker build -t maglaboratory/website .
-docker run -p 8000:80 maglaboratory/website
+docker run -p 8000:80 -v $(pwd):/website --name website --rm maglaboratory/website
 ```
 
 Visit the home page at http://localhost:8000
+
+To rebuild the site, run
+
+```bash
+docker exec website php -f src/compile.php
+```
 
 ## TODO
 * Write Deployment Instructions

@@ -12,7 +12,9 @@
     %link(href="/css/bootstrap-5a0f735.css" rel="stylesheet")
     %link(href="/css/bootstrap-theme-ae00592.css" rel="stylesheet")
     %link(href="/css/maglab.css" rel="stylesheet")
-    %link(href="https://fonts.googleapis.com/css?family=Eczar:600|Raleway:400,400i|Bree+Serif" rel="stylesheet")
+    %link(rel="preconnect" href="https://fonts.googleapis.com")
+    %link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    %link(href="https://fonts.googleapis.com/css2?family=Eczar:600|Raleway:400,400i|Bree+Serif&display=swap" rel="stylesheet")
     /[if IE]
       %script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
       %script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
@@ -34,7 +36,7 @@
         .row
           .col-xs-12.col-sm-6.col-sm-offset-3
             %a(href="/")
-              %image#logo{:src => "/images/logo.png", :title => 'MAGLab Logo'}
+              %image#logo{:src => "/images/logo.webp", :title => 'MAGLab Logo'}
             %address
               %a(href='https://www.google.com/maps/place/MAG+Laboratory/@34.0384934,-117.8235897,17z/data=!4m8!1m2!3m1!2sMAG+Laboratory!3m4!1s0x0:0x56f9a6e0034a854!8m2!3d34.038489!4d-117.8214008' target='_blank')
                 %span.glyphicon.glyphicon-road
@@ -119,7 +121,7 @@
                 %span(aria-hidden="true") &times;
               %h4.modal-title Big Valley Industrial Park sign
             .modal-body
-              %img(src='/images/entrance-sign.png' alt="Big Valley Industrial Park sign" style="width:100%;height:auto;")
+              %img(src='/images/entrance-sign.webp' alt="Big Valley Industrial Park sign" style="width:100%;height:auto;")
               %p This is the middle entrance. If you take this entrance, go all the way down, and then take a slight right until you see a triangular parking island with some palm trees. The space is right across from where parking island starts.
             .modal-footer
               %button.btn.btn-default(type="button" data-dismiss="modal") Close
@@ -132,7 +134,7 @@
                 %span(aria-hidden="true") &times;
               %h4.modal-title Big Valley Industrial Entrance with Flags
             .modal-body
-              %img(src="/images/entrance-flags.png" alt="Big Valley Industrial Entrance flags" style="width:100%;height:auto;")
+              %img(src="/images/entrance-flags.webp" alt="Big Valley Industrial Entrance flags" style="width:100%;height:auto;")
               %p This is the only entrance where you can turn left to get in. So if you're heading south (I-10 behind you), then turn into here. You'll see the triangular parking island with palm trees. We're right across from where the long point of the island stops.
             .modal-footer
               %button.btn.btn-default(type="button" data-dismiss="modal") Close

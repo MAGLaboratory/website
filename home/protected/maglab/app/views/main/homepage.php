@@ -14,7 +14,9 @@ MAG Laboratory -
 <link href="/css/bootstrap-5a0f735.css" rel="stylesheet">
 <link href="/css/bootstrap-theme-ae00592.css" rel="stylesheet">
 <link href="/css/maglab.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Eczar:600|Raleway:400,400i|Bree+Serif" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link <?php echo MtHaml\Runtime::renderAttributes(array(array('rel', 'preconnect'), array('href', 'https://fonts.gstatic.com'), array('crossorigin', TRUE)), 'html5', 'UTF-8'); ?>>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:600|Raleway:400,400i|Bree+Serif&amp;display=swap" rel="stylesheet">
 <!--[if IE]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -40,7 +42,7 @@ ga('send', 'pageview');
 <div class="row">
 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 <a href="/">
-<image <?php echo MtHaml\Runtime::renderAttributes(array(array('id', 'logo'), array('src', '/images/logo.png'), array('title', ('MAGLab Logo'))), 'html5', 'UTF-8'); ?>></image>
+<image <?php echo MtHaml\Runtime::renderAttributes(array(array('id', 'logo'), array('src', '/images/logo.webp'), array('title', ('MAGLab Logo'))), 'html5', 'UTF-8'); ?>></image>
 </a>
 <address>
 <a <?php echo MtHaml\Runtime::renderAttributes(array(array('href', ('https://www.google.com/maps/place/MAG+Laboratory/@34.0384934,-117.8235897,17z/data=!4m8!1m2!3m1!2sMAG+Laboratory!3m4!1s0x0:0x56f9a6e0034a854!8m2!3d34.038489!4d-117.8214008')), array('target', ('_blank'))), 'html5', 'UTF-8'); ?>>
@@ -270,7 +272,7 @@ to check if--and for how long--the space will be open by the time you arrive.
 <h4 class="modal-title">Big Valley Industrial Park sign</h4>
 </div>
 <div class="modal-body">
-<img <?php echo MtHaml\Runtime::renderAttributes(array(array('src', ('/images/entrance-sign.png')), array('alt', 'Big Valley Industrial Park sign'), array('style', 'width:100%;height:auto;')), 'html5', 'UTF-8'); ?>>
+<img <?php echo MtHaml\Runtime::renderAttributes(array(array('src', ('/images/entrance-sign.webp')), array('alt', 'Big Valley Industrial Park sign'), array('style', 'width:100%;height:auto;')), 'html5', 'UTF-8'); ?>>
 <p>This is the middle entrance. If you take this entrance, go all the way down, and then take a slight right until you see a triangular parking island with some palm trees. The space is right across from where parking island starts.</p>
 </div>
 <div class="modal-footer">
@@ -289,7 +291,7 @@ to check if--and for how long--the space will be open by the time you arrive.
 <h4 class="modal-title">Big Valley Industrial Entrance with Flags</h4>
 </div>
 <div class="modal-body">
-<img src="/images/entrance-flags.png" alt="Big Valley Industrial Entrance flags" style="width:100%;height:auto;">
+<img src="/images/entrance-flags.webp" alt="Big Valley Industrial Entrance flags" style="width:100%;height:auto;">
 <p>This is the only entrance where you can turn left to get in. So if you're heading south (I-10 behind you), then turn into here. You'll see the triangular parking island with palm trees. We're right across from where the long point of the island stops.</p>
 </div>
 <div class="modal-footer">

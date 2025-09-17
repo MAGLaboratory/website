@@ -15,7 +15,7 @@
 <?php if($email_logo) { ?>
 <tr>
 <td>
-<img <?php echo MtHaml\Runtime::renderAttributes(array(array('src', ('http://www.maglaboratory.org/images/email-logo.png')), array('alt', ('MAG Laboratory Logo'))), 'html5', 'UTF-8'); ?>>
+<img <?php echo MtHaml\Runtime::renderAttributes(array(array('src', ('http://www.maglaboratory.org/images/email-logo.webp')), array('alt', ('MAG Laboratory Logo'))), 'html5', 'UTF-8'); ?>>
 </td>
 </tr>
 <?php } ?>

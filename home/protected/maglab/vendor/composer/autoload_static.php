@@ -12,101 +12,98 @@ class ComposerStaticInitac49f09f570f8a29adb63669117d1cc3
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'Slim\\Views\\' => 11,
             'Slim\\' => 5,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
         ),
-        'M' => 
+        'M' =>
         array (
             'MtHaml\\' => 7,
             'Models\\' => 7,
         ),
-        'I' => 
-        array (
-            'Interop\\Container\\' => 18,
-        ),
-        'H' => 
+        'H' =>
         array (
             'Helpers\\' => 8,
         ),
-        'F' => 
+        'F' =>
         array (
             'FastRoute\\' => 10,
         ),
-        'C' => 
+        'C' =>
         array (
             'Controllers\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Slim\\Views\\' => 
+        'Slim\\Views\\' =>
         array (
             0 => __DIR__ . '/..' . '/slim/php-view/src',
         ),
-        'Slim\\' => 
+        'Slim\\' =>
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Http\\Message\\' => 
+        'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'MtHaml\\' => 
+        'Psr\\Container\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'MtHaml\\' =>
         array (
             0 => __DIR__ . '/../..' . '/lib/mthaml',
         ),
-        'Models\\' => 
+        'Models\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app/models',
         ),
-        'Interop\\Container\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
-        ),
-        'Helpers\\' => 
+        'Helpers\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app/helpers',
         ),
-        'FastRoute\\' => 
+        'FastRoute\\' =>
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
-        'Controllers\\' => 
+        'Controllers\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app/controllers',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'P' => 
+        'P' =>
         array (
-            'Pimple' => 
+            'Pimple' =>
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
             ),
-            'PayPal' => 
+            'PayPal' =>
             array (
                 0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
             ),
-            'Parsedown' => 
+            'Parsedown' =>
             array (
                 0 => __DIR__ . '/..' . '/erusev/parsedown',
             ),
         ),
-        'H' => 
+        'H' =>
         array (
-            'HTMLPurifier' => 
+            'HTMLPurifier' =>
             array (
                 0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
             ),
@@ -117,6 +114,10 @@ class ComposerStaticInitac49f09f570f8a29adb63669117d1cc3
         0 => __DIR__ . '/..' . '/morris/lessql/src',
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
@@ -124,6 +125,7 @@ class ComposerStaticInitac49f09f570f8a29adb63669117d1cc3
             $loader->prefixDirsPsr4 = ComposerStaticInitac49f09f570f8a29adb63669117d1cc3::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitac49f09f570f8a29adb63669117d1cc3::$prefixesPsr0;
             $loader->fallbackDirsPsr0 = ComposerStaticInitac49f09f570f8a29adb63669117d1cc3::$fallbackDirsPsr0;
+            $loader->classMap = ComposerStaticInitac49f09f570f8a29adb63669117d1cc3::$classMap;
 
         }, null, ClassLoader::class);
     }

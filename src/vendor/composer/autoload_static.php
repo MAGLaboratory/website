@@ -7,33 +7,38 @@ namespace Composer\Autoload;
 class ComposerStaticInitf0e653704b251537ee441425b8f719b9
 {
     public static $prefixesPsr0 = array (
-        'P' => 
+        'P' =>
         array (
-            'Parsedown' => 
+            'Parsedown' =>
             array (
                 0 => __DIR__ . '/..' . '/erusev/parsedown',
             ),
         ),
-        'M' => 
+        'M' =>
         array (
-            'MtHaml\\' => 
+            'MtHaml\\' =>
             array (
                 0 => __DIR__ . '/..' . '/mthaml/mthaml/lib',
             ),
         ),
-        'C' => 
+        'C' =>
         array (
-            'CoffeeScript' => 
+            'CoffeeScript' =>
             array (
                 0 => __DIR__ . '/..' . '/coffeescript/coffeescript/src',
             ),
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixesPsr0 = ComposerStaticInitf0e653704b251537ee441425b8f719b9::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitf0e653704b251537ee441425b8f719b9::$classMap;
 
         }, null, ClassLoader::class);
     }

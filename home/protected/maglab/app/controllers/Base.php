@@ -4,6 +4,10 @@ namespace Controllers;
 
 class Base {
   protected $app;
+  protected $current_user;
+  protected $respond;
+  protected $purifier;
+  protected $phpRenderer;
 
   public function __construct($app = null){
     $this->app = $app;

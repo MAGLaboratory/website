@@ -5,6 +5,8 @@ namespace Controllers\JobBoard;
 use Controllers\PurifierBase as PurifierBase;
 
 class Listing extends PurifierBase {
+  protected $db;
+
   function init(){
     $this->db = \Models\Maria::Instance();
     $this->app->get('/jobs', [$this, 'index']);

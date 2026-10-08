@@ -80,7 +80,7 @@ class auth_plugin_authmaglab extends DokuWiki_Auth_Plugin {
      */
     public function getUserData($user) {
       if(is_array($user) and $user['id']){
-        $user['name'] = "${user['first_name']} ${user['last_name']}";
+        $user['name'] = "{$user['first_name']} {$user['last_name']}";
         $user['mail'] = $user['email'];
         $user['grps'] = explode(',', $user['role']);
         array_push($user['grps'], 'user');

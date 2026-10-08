@@ -18,7 +18,13 @@ Visit the home page at http://localhost:8000
 To rebuild the site, run
 
 ```bash
-docker exec website php -f src/compile.php
+docker run -v $(pwd):/website --rm maglaboratory/website php -f src/compile.php
+```
+
+To sync dependencies with `composer.lock`, run
+
+```bash
+docker run -v $(pwd):/website --rm -w /website/src maglaboratory/website composer install
 ```
 
 ## TODO

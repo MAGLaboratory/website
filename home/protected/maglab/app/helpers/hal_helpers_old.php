@@ -9,7 +9,7 @@ function get_mysqli(){
   } else {
     try {
       $mysqli = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB);
-    } catch (Exception $e){
+    } catch (Throwable $e){
       $mysqli = false;
     }
     if(mysqli_connect_errno()){
@@ -309,11 +309,11 @@ function timeline_graph_json($from, $to){
       if($value[3] && $value[3] > $end_at){
         $end_at = $value[3];
       }
-      array_push($response, "['${name}', '', new Date(${value[1]}000), new Date(${end_at}000)]");
+      array_push($response, "['{$name}', '', new Date({$value[1]}000), new Date({$end_at}000)]");
     }
   
     $response = implode(",\n", $response);
-    return "[${response}]";
+    return "[{$response}]";
   }  
   # [Name, Subname, from, to]
   return "[]";
@@ -334,6 +334,7 @@ function get_latest($sensors){
   # second reverse
   $sql .= ") DESC";
   $mysqli = get_mysqli();
+  if(!$mysqli){ return null; }
   if($stmt = $mysqli->prepare($sql)){
     $stmt->execute();
     if($res = $stmt->get_result()){

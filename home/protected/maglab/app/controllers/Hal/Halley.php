@@ -3,6 +3,8 @@
 namespace Controllers\Hal;
 
 class Halley {
+  protected $app;
+
   public function __construct($app = null){
     $this->app = $app;
     $this->init();

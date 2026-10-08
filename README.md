@@ -15,16 +15,18 @@ docker run -p 8000:80 -v $(pwd):/website --name website --rm maglaboratory/websi
 
 Visit the home page at http://localhost:8000
 
+The view compiler's dependencies in `src/vendor` are not committed. Install them before the first rebuild, and again whenever `src/composer.lock` changes:
+
+```bash
+docker run -v $(pwd):/website --rm -w /website/src -u $(id -u):$(id -g) -e COMPOSER_HOME=/tmp/composer maglaboratory/website composer install
+```
+
+Running as your own user keeps `src/vendor` owned by you rather than root. Patches to dependencies live in `src/patches` and are applied automatically by `composer install`.
+
 To rebuild the site, run
 
 ```bash
 docker run -v $(pwd):/website --rm maglaboratory/website php -f src/compile.php
-```
-
-To sync dependencies with `composer.lock`, run
-
-```bash
-docker run -v $(pwd):/website --rm -w /website/src maglaboratory/website composer install
 ```
 
 ## TODO

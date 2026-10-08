@@ -1,56 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "8ec569014276c42f9fa1c52b41f8c03c",
-    "content-hash": "2f6b5bc73e433833d07616e5e46931c9",
+    "content-hash": "099978de0b86df90f6b9d2480e16cf1e",
     "packages": [
-        {
-            "name": "coffeescript/coffeescript",
-            "version": "1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alxlit/coffeescript-php.git",
-                "reference": "ef262881d3f1edcca1366f4ddf18293843370da5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alxlit/coffeescript-php/zipball/ef262881d3f1edcca1366f4ddf18293843370da5",
-                "reference": "ef262881d3f1edcca1366f4ddf18293843370da5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "CoffeeScript": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alex Little",
-                    "email": "alxlit@gmail.com",
-                    "homepage": "http://alxlit.name"
-                }
-            ],
-            "description": "A port of the CoffeeScript compiler to PHP.",
-            "homepage": "http://github.com/alxlit/coffeescript-php",
-            "keywords": [
-                "JS",
-                "coffee",
-                "coffeescript",
-                "javascript"
-            ],
-            "time": "2012-08-04 14:44:51"
-        },
         {
             "name": "erusev/parsedown",
             "version": "1.6.0",
@@ -88,7 +43,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2015-10-04 16:44:32"
+            "time": "2015-10-04T16:44:32+00:00"
         },
         {
             "name": "mthaml/mthaml",
@@ -159,15 +114,68 @@
             "keywords": [
                 "HAML"
             ],
-            "time": "2015-12-17 09:48:00"
+            "time": "2015-12-17T09:48:00+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "cweagans/composer-patches",
+            "version": "1.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0 || ~2.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-patches/issues",
+                "source": "https://github.com/cweagans/composer-patches/tree/1.7.3"
+            },
+            "time": "2022-12-20T22:53:13+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": {},
+    "platform-dev": {},
+    "platform-overrides": {
+        "php": "8.2.20"
+    },
+    "plugin-api-version": "2.9.0"
 }

@@ -1,6 +1,7 @@
 FROM php:8.2.20-apache
 
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+RUN apt-get update && apt-get install -y --no-install-recommends unzip && rm -rf /var/lib/apt/lists/*
 COPY . /website
 
 ENV APACHE_DOCUMENT_ROOT=/website/home/public

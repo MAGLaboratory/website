@@ -1,0 +1,89 @@
+diff --color -ruN -x Midblock.php a/lib/MtHaml/Environment.php b/lib/MtHaml/Environment.php
+--- a/lib/MtHaml/Environment.php
++++ b/lib/MtHaml/Environment.php
+@@ -20,6 +20,7 @@
+         'cdata' => true,
+         'autoclose' => array('meta', 'img', 'link', 'br', 'hr', 'input', 'area', 'param', 'col', 'base'),
+         'charset' => 'UTF-8',
++        'indent' => true,
+         'enable_dynamic_attrs' => true,
+     );
+ 
+diff --color -ruN -x Midblock.php a/lib/MtHaml/Node/Run.php b/lib/MtHaml/Node/Run.php
+--- a/lib/MtHaml/Node/Run.php
++++ b/lib/MtHaml/Node/Run.php
+@@ -49,6 +49,18 @@
+     {
+         return $this->hasChilds() || $this->hasMidblock();
+     }
++    
++    public function isWrappedBlock()
++    {
++        $content = $this->getContent();
++        return ($content and preg_match('/{\s*$/', $content));
++    }
++    
++    public function isCaptureBlock()
++    {
++      $content = $this->getContent();
++      return ($content and preg_match('/>*<\s*$/', $content));
++    }
+ 
+     public function accept(NodeVisitorInterface $visitor)
+     {
+diff --color -ruN -x Midblock.php a/lib/MtHaml/NodeVisitor/PhpRenderer.php b/lib/MtHaml/NodeVisitor/PhpRenderer.php
+--- a/lib/MtHaml/NodeVisitor/PhpRenderer.php
++++ b/lib/MtHaml/NodeVisitor/PhpRenderer.php
+@@ -15,6 +15,12 @@
+ 
+ class PhpRenderer extends RendererAbstract
+ {
++
++    public function yielding($name, $content){
++      $this->env->getOptions['yield_' . $name] = $content;
++    }
++    
++    
+     protected function escapeLanguage($string, $context)
+     {
+         // If there is a '?' at the begining of the string, it could become
+@@ -93,8 +99,13 @@
+         $this->addDebugInfos($node);
+ 
+         $content = $this->trimInlineComments($node->getContent());
+-
+-        if (!$node->isBlock()) {
++        
++        if($node->isWrappedBlock()){
++          $this->write(sprintf('<?php %s ?>' , $content));
++        } elseif ($node->isCaptureBlock()) {
++          $new_content = str_replace('>*<', 'function(){', $content);
++          $this->write(sprintf('<?php %s ?>', $new_content));
++        } elseif (!$node->isBlock()) {
+             if (preg_match('~[:;]\s*$~', $content)) {
+                 $this->write(sprintf('<?php %s ?>' , $content));
+             } else {
+@@ -116,7 +127,9 @@
+ 
+     public function leaveTopBlock(Run $node)
+     {
+-        if ($node->isBlock()) {
++        if($node->isCaptureBlock()){
++            $this->write('<?php }); ?>');
++        } elseif ($node->isBlock()) {
+             $this->write('<?php } ?>');
+         }
+     }
+diff --color -ruN -x Midblock.php a/lib/MtHaml/NodeVisitor/RendererAbstract.php b/lib/MtHaml/NodeVisitor/RendererAbstract.php
+--- a/lib/MtHaml/NodeVisitor/RendererAbstract.php
++++ b/lib/MtHaml/NodeVisitor/RendererAbstract.php
+@@ -121,7 +121,8 @@
+ 
+     protected function writeIndentation()
+     {
+-        $this->output .= str_repeat(' ', $this->indent * 2);
++        if($this->env->getOptions()['indent'])
++          $this->output .= str_repeat(' ', $this->indent * 2);
+ 
+         return $this;
+     }

@@ -7,6 +7,9 @@
 
 /deploy/config.php
 
+# installed by composer install in src/ (see README)
+/src/vendor
+
 /.sass-cache
 /home/public/css/*.map
 

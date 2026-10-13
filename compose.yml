@@ -1,0 +1,63 @@
+services:
+  website:
+    build: .
+    image: maglaboratory/website
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/website
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: maglab
+      MYSQL_PASS: maglab
+      MYSQL_DB: maglabs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mariadb:10.11.6
+    command: --sql-mode=NO_ENGINE_SUBSTITUTION
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db/migrate/1476766391_maglabs.sql:/docker-entrypoint-initdb.d/maglabs.sql:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: maglabs
+      MYSQL_USER: maglab
+      MYSQL_PASSWORD: maglab
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  init:
+    image: maglaboratory/website
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - .:/website
+    environment:
+      COMPOSER_HOME: /tmp/composer
+    command:
+      - "/bin/sh"
+      - "-c"
+      - >
+        cd /website/src &&
+        composer install &&
+        cd /website/home/protected/maglab &&
+        composer install &&
+        php -f /website/src/compile.php
+    depends_on:
+      website:
+        condition: service_started
+
+volumes:
+  db-data:

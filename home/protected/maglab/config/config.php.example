@@ -5,10 +5,10 @@ $mysqli = null;
 
 define('SKIP_CHECKSUM', false);
 define('COOKIE_SECRET', 'secretforcookies');
-define('MYSQL_HOST', '');
-define('MYSQL_USER', '');
-define('MYSQL_PASS', '');
-define('MYSQL_DB', '');
+define('MYSQL_HOST', getenv('MYSQL_HOST') ?: '');
+define('MYSQL_USER', getenv('MYSQL_USER') ?: '');
+define('MYSQL_PASS', getenv('MYSQL_PASS') ?: '');
+define('MYSQL_DB', getenv('MYSQL_DB') ?: '');
 define('WIKI_INSTALL_PATH', '/home/protected/mediawiki-version');
 define('ROOT_URL', "web deployment url");
 

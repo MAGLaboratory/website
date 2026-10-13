@@ -6,27 +6,53 @@ Also, the readme is a work in progress.
 ## Development Setup
 
 Prerequisites
-* Docker
+* Docker with Docker Compose
+
+Copy the example config. It reads the database settings from the environment variables set in `compose.yml`:
 
 ```bash
-docker build -t maglaboratory/website .
-docker run -p 8000:80 -v $(pwd):/website --name website --rm maglaboratory/website
+cp home/protected/maglab/config/config.php.example home/protected/maglab/config/config.php
 ```
+
+Then start everything:
+
+```bash
+docker compose up --build
+```
+
+This starts the following services:
+
+| Service    | What it does |
+|------------|--------------|
+| `db`       | MariaDB 10.11, seeded from `db/migrate/1476766391_maglabs.sql` on first start and exposed on port 3306 |
+| `website`  | Apache + PHP serving `home/public`, exposed on port 8000 |
+| `init`     | Runs `composer install` in `src` and `home/protected/maglab`, compiles the site with `src/compile.php`, then exits |
 
 Visit the home page at http://localhost:8000
 
-The view compiler's dependencies in `src/vendor` are not committed. Install them before the first rebuild, and again whenever `src/composer.lock` changes:
+> [!IMPORTANT]
+> The `init` service runs as UID/GID 1000 by default so `vendor` directories and compiled files stay owned by you rather than root. If your IDs differ, put them in a `.env` file, which Compose reads automatically. Don't export `UID` in the shell, since bash and zsh treat it as read-only.
 
 ```bash
-docker run -v $(pwd):/website --rm -w /website/src -u $(id -u):$(id -g) -e COMPOSER_HOME=/tmp/composer maglaboratory/website composer install
+printf 'UID=%s\nGID=%s\n' "$(id -u)" "$(id -g)" > .env
 ```
 
-Running as your own user keeps `src/vendor` owned by you rather than root. Patches to dependencies live in `src/patches` and are applied automatically by `composer install`.
+The database lives in the `db-data` volume, so the seed script only runs on a fresh volume. To reset it, run `docker compose down -v`.
 
-To rebuild the site, run
+Patches to the view compiler's dependencies live in `src/patches` and are applied automatically by `composer install`.
+
+### Rebuilding the site
+
+To rebuild the site after changing views or styles, run
 
 ```bash
-docker run -v $(pwd):/website --rm maglaboratory/website php -f src/compile.php
+docker compose run --rm init php -f /website/src/compile.php
+```
+
+To also reinstall dependencies (for example after a `composer.lock` change), run the full `init` service:
+
+```bash
+docker compose run --rm init
 ```
 
 ## TODO
